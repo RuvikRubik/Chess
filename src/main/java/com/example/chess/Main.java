@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class Main extends Application {
 
-    private static final int BOARD_SIZE = 8;
+    public static final int BOARD_SIZE = 8;
     private static final int SQUARE_SIZE = 80;
     private Rectangle[][] squares;
     private ImageView[][] imageViews;
@@ -105,9 +105,7 @@ public class Main extends Application {
             if(Possiblemoves != null){
                 ColorFiled(Color.GOLD);
             }
-
-            //squares[row][col].setFill(Color.YELLOW);
-            System.out.println("Kliknięto na "+figure.nazwa()+" w wierszu: " + row + ", kolumnie: " + col);
+            //System.out.println("Kliknięto na "+figure.nazwa()+" w wierszu: " + row + ", kolumnie: " + col);
             Ruch = true;
         }else{
             if(Possiblemoves != null) {
@@ -122,6 +120,10 @@ public class Main extends Application {
             int col = GridPane.getColumnIndex(rectangle);
             int row = GridPane.getRowIndex(rectangle);
             if(correctField(col,row)){
+                if(plansza[row][col] != null){
+                    ImageView pawnToDelete = imageViews[row][col];
+                    gridPane.getChildren().remove(pawnToDelete);
+                }
                 ImageView pawnToMove = imageViews[figure.getRow()][figure.getColumn()];
                 gridPane.getChildren().remove(pawnToMove);
                 gridPane.add(pawnToMove,col,row);

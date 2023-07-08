@@ -1,6 +1,12 @@
 package com.example.chess.models;
 
 import javafx.scene.paint.Color;
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.chess.Main.BOARD_SIZE;
 
 public class Hetman extends Figura{
 
@@ -14,6 +20,95 @@ public class Hetman extends Figura{
         }else{
             return"czarny-hetman";
         }
+    }
+    @Override
+    public List<Pair<Integer,Integer>> GeneratePossibleMoves(Figura[][] figures) {
+        List<Pair<Integer, Integer>> field = new ArrayList<>();
+        int column = getColumn();
+        int wiersz = getRow();
+        for(int col = getColumn()+1;col<BOARD_SIZE;col++){
+            if(figures[wiersz][col] == null || getKolor() != figures[wiersz][col].getKolor()){
+                field.add(new Pair<>(wiersz,col));
+            }
+            else{
+                break;
+            }
+        }
+        for(int col = getColumn()-1;col>=0;col--){
+            if(figures[wiersz][col] == null || getKolor() != figures[wiersz][col].getKolor()){
+                field.add(new Pair<>(wiersz,col));
+            }
+            else{
+                break;
+            }
+        }
+        for(int row = getRow()+1;row<BOARD_SIZE;row++){
+            if(figures[row][column] == null || getKolor() != figures[row][column].getKolor()){
+                field.add(new Pair<>(row,column));
+            }
+            else{
+                break;
+            }
+        }
+        for(int row = getRow()-1;row>=0;row--){
+            if(figures[row][column] == null || getKolor() != figures[row][column].getKolor()){
+                field.add(new Pair<>(row,column));
+            }
+            else{
+                break;
+            }
+        }
+        int col = getColumn();
+        int row = getRow();
+        for(int add =1;add<BOARD_SIZE;add++){
+            if(col + add >= BOARD_SIZE || row + add >= BOARD_SIZE){
+                break;
+            }else{
+                if(figures[row + add][col + add] == null || getKolor() != figures[row + add][col + add].getKolor()){
+                    field.add(new Pair<>(row + add,col + add));
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        for(int add =1;add<BOARD_SIZE;add++){
+            if(col - add < 0 || row - add < 0){
+                break;
+            }else{
+                if(figures[row - add][col - add] == null || getKolor() != figures[row - add][col - add].getKolor()){
+                    field.add(new Pair<>(row - add,col - add));
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        for(int add =1;add<BOARD_SIZE;add++){
+            if(col - add < 0 || row + add >= BOARD_SIZE){
+                break;
+            }else{
+                if(figures[row + add][col - add] == null || getKolor() != figures[row + add][col - add].getKolor()){
+                    field.add(new Pair<>(row + add,col - add));
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        for(int add =1;add<BOARD_SIZE;add++){
+            if(col + add >= BOARD_SIZE || row - add < 0){
+                break;
+            }else{
+                if(figures[row - add][col + add] == null || getKolor() != figures[row - add][col + add].getKolor()){
+                    field.add(new Pair<>(row - add,col + add));
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        return field;
     }
     @Override
     public String toString() {
