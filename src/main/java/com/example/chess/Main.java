@@ -19,7 +19,11 @@ public class Main extends Application {
 
     public static final int BOARD_SIZE = 8;
     private static final int SQUARE_SIZE = 80;
+
+    private final Color WHITE = Color.WHITE;
+    private final Color BLACK = Color.BLACK;
     private Rectangle[][] squares;
+    private Color currentPlayer = WHITE;
     private ImageView[][] imageViews;
     private boolean Ruch = false;
     private Figura figure;
@@ -51,8 +55,10 @@ public class Main extends Application {
         for(int row = 0;row <8;row++){
             plansza[6][row] = new Pionek(Color.WHITE,6,row);
         }
-
-
+    }
+    private void CreateBoard2(){
+        plansza[1][2] = new Pionek(Color.WHITE,1,2);
+        plansza[2][2] = new Pionek(Color.BLACK,2,2);
     }
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -95,11 +101,9 @@ public class Main extends Application {
     }
 
     private void handleFigureClick(ImageView imageView) {
-        int col;
-        int row;
-        if(!Ruch){
-            col = GridPane.getColumnIndex(imageView);
-            row = GridPane.getRowIndex(imageView);
+        int col = GridPane.getColumnIndex(imageView);
+        int row = GridPane.getRowIndex(imageView);
+        if(!Ruch && plansza[row][col].getKolor() == currentPlayer){
             figure = plansza[row][col];
             Possiblemoves = figure.GeneratePossibleMoves(plansza);
             if(Possiblemoves != null){
@@ -135,6 +139,16 @@ public class Main extends Application {
                 figure.setRow(row);
                 CorrectColorField();
                 Ruch = false;
+                if(currentPlayer == WHITE){
+                    currentPlayer = BLACK;
+                }else{
+                    currentPlayer = WHITE;
+                }
+                if(figure instanceof Pionek){
+                    ((Pionek) figure).setMove(true);
+                    ((Pionek) figure).isPromote(plansza,imageViews);
+                    System.out.println(figure);
+                }
             }
             else {
                 CorrectColorField();

@@ -15,7 +15,7 @@ public class Hetman extends Figura{
     }
     @Override
     public String nazwa(){
-        if(getKolor().equals(Color.BLACK)){
+        if(getKolor().equals(Color.WHITE)){
             return "bialy-hetman";
         }else{
             return"czarny-hetman";

@@ -15,7 +15,7 @@ public class Krol extends Figura{
     }
     @Override
     public String nazwa(){
-        if(getKolor().equals(Color.BLACK)){
+        if(getKolor().equals(Color.WHITE)){
             return "bialy-krol";
         }else{
             return"czarny-krol";
