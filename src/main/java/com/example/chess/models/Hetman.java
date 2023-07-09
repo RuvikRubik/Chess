@@ -27,32 +27,48 @@ public class Hetman extends Figura{
         int column = getColumn();
         int wiersz = getRow();
         for(int col = getColumn()+1;col<BOARD_SIZE;col++){
-            if(figures[wiersz][col] == null || getKolor() != figures[wiersz][col].getKolor()){
+            if(figures[wiersz][col] == null){
                 field.add(new Pair<>(wiersz,col));
+            }
+            else if (getKolor() != figures[wiersz][col].getKolor()) {
+                field.add(new Pair<>(wiersz,col));
+                break;
             }
             else{
                 break;
             }
         }
         for(int col = getColumn()-1;col>=0;col--){
-            if(figures[wiersz][col] == null || getKolor() != figures[wiersz][col].getKolor()){
+            if(figures[wiersz][col] == null){
                 field.add(new Pair<>(wiersz,col));
+            }
+            else if (getKolor() != figures[wiersz][col].getKolor()) {
+                field.add(new Pair<>(wiersz,col));
+                break;
             }
             else{
                 break;
             }
         }
         for(int row = getRow()+1;row<BOARD_SIZE;row++){
-            if(figures[row][column] == null || getKolor() != figures[row][column].getKolor()){
+            if(figures[row][column] == null){
                 field.add(new Pair<>(row,column));
+            }
+            else if (getKolor() != figures[row][column].getKolor()) {
+                field.add(new Pair<>(row,column));
+                break;
             }
             else{
                 break;
             }
         }
         for(int row = getRow()-1;row>=0;row--){
-            if(figures[row][column] == null || getKolor() != figures[row][column].getKolor()){
+            if(figures[row][column] == null){
                 field.add(new Pair<>(row,column));
+            }
+            else if (getKolor() != figures[row][column].getKolor()) {
+                field.add(new Pair<>(row,column));
+                break;
             }
             else{
                 break;
@@ -64,8 +80,12 @@ public class Hetman extends Figura{
             if(col + add >= BOARD_SIZE || row + add >= BOARD_SIZE){
                 break;
             }else{
-                if(figures[row + add][col + add] == null || getKolor() != figures[row + add][col + add].getKolor()){
+                if(figures[row + add][col + add] == null){
                     field.add(new Pair<>(row + add,col + add));
+                }
+                else if(getKolor() != figures[row + add][col + add].getKolor()){
+                    field.add(new Pair<>(row + add,col + add));
+                    break;
                 }
                 else{
                     break;
@@ -76,8 +96,12 @@ public class Hetman extends Figura{
             if(col - add < 0 || row - add < 0){
                 break;
             }else{
-                if(figures[row - add][col - add] == null || getKolor() != figures[row - add][col - add].getKolor()){
+                if(figures[row - add][col - add] == null){
                     field.add(new Pair<>(row - add,col - add));
+                }
+                else if(getKolor() != figures[row - add][col - add].getKolor()){
+                    field.add(new Pair<>(row - add,col - add));
+                    break;
                 }
                 else{
                     break;
@@ -88,8 +112,12 @@ public class Hetman extends Figura{
             if(col - add < 0 || row + add >= BOARD_SIZE){
                 break;
             }else{
-                if(figures[row + add][col - add] == null || getKolor() != figures[row + add][col - add].getKolor()){
+                if(figures[row + add][col - add] == null){
                     field.add(new Pair<>(row + add,col - add));
+                }
+                else if(getKolor() != figures[row + add][col - add].getKolor()){
+                    field.add(new Pair<>(row + add,col - add));
+                    break;
                 }
                 else{
                     break;
@@ -100,8 +128,12 @@ public class Hetman extends Figura{
             if(col + add >= BOARD_SIZE || row - add < 0){
                 break;
             }else{
-                if(figures[row - add][col + add] == null || getKolor() != figures[row - add][col + add].getKolor()){
+                if(figures[row - add][col + add] == null){
                     field.add(new Pair<>(row - add,col + add));
+                }
+                else if(getKolor() != figures[row - add][col + add].getKolor()){
+                    field.add(new Pair<>(row - add,col + add));
+                    break;
                 }
                 else{
                     break;

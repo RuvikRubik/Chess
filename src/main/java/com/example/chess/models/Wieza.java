@@ -23,9 +23,9 @@ public class Wieza extends Figura{
     }
     @Override
     public List<Pair<Integer,Integer>> GeneratePossibleMoves(Figura[][] figures) {
+        List<Pair<Integer, Integer>> field = new ArrayList<>();
         int column = getColumn();
         int wiersz = getRow();
-        List<Pair<Integer, Integer>> field = new ArrayList<>();
         for(int col = getColumn()+1;col<BOARD_SIZE;col++){
             if(figures[wiersz][col] == null){
                 field.add(new Pair<>(wiersz,col));
