@@ -16,9 +16,9 @@ public class Goniec extends Figura{
     @Override
     public String nazwa(){
         if(getKolor().equals(Color.WHITE)){
-            return "bialy-goniec";
+            return "white_bishop";
         }else{
-            return"czarny-goniec";
+            return"black_bishop";
         }
     }
     @Override

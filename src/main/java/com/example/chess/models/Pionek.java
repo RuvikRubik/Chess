@@ -27,9 +27,9 @@ public class Pionek extends Figura{
     @Override
     public String nazwa(){
         if(getKolor().equals(Color.WHITE)){
-            return "bialy-pionek";
+            return "white_pawn";
         }else{
-            return"czarny-pionek";
+            return"black_pawn";
         }
     }
     @Override

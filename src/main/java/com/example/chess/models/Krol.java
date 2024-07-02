@@ -16,9 +16,9 @@ public class Krol extends Figura{
     @Override
     public String nazwa(){
         if(getKolor().equals(Color.WHITE)){
-            return "bialy-krol";
+            return "white_king";
         }else{
-            return"czarny-krol";
+            return"black_king";
         }
     }
 
@@ -38,7 +38,7 @@ public class Krol extends Figura{
                 new Pair<>(0, 1)
         );
         for(Pair<Integer, Integer> moves: possiblemoves){
-            if(col + moves.getValue() < BOARD_SIZE && col - moves.getValue() >= 0 && row + moves.getKey() < BOARD_SIZE && row - moves.getKey() >=0){
+            if(col + moves.getValue() < BOARD_SIZE && col + moves.getValue() >= 0 && row + moves.getKey() < BOARD_SIZE && row + moves.getKey() >=0){
                 if(figures[row + moves.getKey()][col + moves.getValue()] == null || figures[row + moves.getKey()][col + moves.getValue()].getKolor() != getKolor()){
                     field.add(new Pair<>(row + moves.getKey(),col + moves.getValue()));
                 }

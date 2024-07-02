@@ -16,9 +16,9 @@ public class Wieza extends Figura{
     @Override
     public String nazwa(){
         if(getKolor().equals(Color.WHITE)){
-            return "biala-wieza";
+            return "white_rook";
         }else{
-            return"czarna-wieza";
+            return"black_rook";
         }
     }
     @Override

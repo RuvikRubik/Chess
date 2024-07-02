@@ -16,9 +16,9 @@ public class Skoczek extends Figura{
     @Override
     public String nazwa(){
         if(getKolor().equals(Color.WHITE)){
-            return "bialy-skoczek";
+            return "white_knight";
         }else{
-            return"czarny-skoczek";
+            return"black_knight";
         }
     }
 

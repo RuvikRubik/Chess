@@ -85,7 +85,7 @@ public class Main extends Application {
                     imageView.setFitWidth(SQUARE_SIZE);
                     imageView.setFitHeight(SQUARE_SIZE);
                     Figura piece = plansza[row][col];
-                    Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/" + piece.nazwa() + ".png")));
+                    Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Img/Figures/" + piece.nazwa() + ".png")));
                     imageView.setImage(image);
                     imageView.setOnMouseClicked(event -> handleFigureClick(imageView));
                     imageViews[row][col] = imageView;
